@@ -1,0 +1,71 @@
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import './App.css';
+
+function App() {
+  const [roomCode, setRoomCode] = useState('');
+  const [messages, setMessages] = useState([]);
+  const [files, setFiles] = useState([]);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  useEffect(() => {
+    // Fetch messages and files for the current room
+    // Use an API endpoint on the backend to retrieve data
+    fetch(`/api/room/${roomCode}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setMessages(data.messages);
+        setFiles(data.files);
+      });
+  }, [roomCode]);
+
+  const handleFileChange = (e) => {
+    setSelectedFile(e.target.files[0]);
+  };
+
+  const handleFileUpload = () => {
+    // Upload the selected file to the server
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+    fetch(`/api/upload/${roomCode}`, {
+      method: 'POST',
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response (e.g., show a success message)
+      });
+  };
+
+  return (
+    <div className="App">
+      <h1>File Uploading Website</h1>
+      <input
+        type="text"
+        placeholder="Enter Room Code"
+        value={roomCode}
+        onChange={(e) => setRoomCode(e.target.value)}
+      />
+      <div className="messages">
+        {messages.map((message, index) => (
+          <div key={index}>{message}</div>
+        ))}
+      </div>
+      <div className="file-upload">
+        <input type="file" onChange={handleFileChange} />
+        <button onClick={handleFileUpload}>Upload File</button>
+      </div>
+      <div className="files">
+        {files.map((file, index) => (
+          <div key={index}>
+            <a href={`/api/download/${roomCode}/${file}`} download>
+              {file}
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export default App;

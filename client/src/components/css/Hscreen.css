@@ -1,0 +1,22 @@
+/* Home.css */
+.container {
+    text-align: center;
+    margin-top: 100px;
+  }
+  
+  h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  Link {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-decoration: none;
+  }
+  
+  Link:hover {
+    text-decoration: underline;
+  }
+  
