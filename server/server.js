@@ -6,12 +6,14 @@ const cors = require('cors');
 
 
 require('dotenv').config();
-mongoose.connect(process.env.mongo_url, {
+mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+  useUnifiedTopology: true,
+})
+.then(() => {
   console.log('Connected to MongoDB Atlas');
-}).catch((err) => {
+})
+.catch((err) => {
   console.error(err);
 });
 
