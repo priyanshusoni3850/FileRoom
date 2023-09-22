@@ -9,7 +9,7 @@ const CreateRoom = () => {
 
   const createRoom = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/rooms/create', { roomCode });
+      const response = await axios.post('https://fileroom.onrender.com/api/rooms/create', { roomCode });
       navigate(`/room/${response.data.roomCode}`);
     } catch (error) {
       console.error('Error creating room:', error);

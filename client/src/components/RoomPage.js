@@ -13,7 +13,7 @@ const RoomPage = () => {
     const fetchUploads = async (roomCode) => {
         try {
             console.log('Fetching uploads for roomCode:', roomCode);
-            const response = await axios.get(`http://localhost:5000/api/rooms/${roomCode}/uploads`);
+            const response = await axios.get(`https://fileroom.onrender.com/api/rooms/${roomCode}/uploads`);
             setUploads(response.data.uploads);
         } catch (error) {
             console.error('Error fetching uploads:', error);
@@ -31,7 +31,7 @@ const RoomPage = () => {
         formData.append('file', file);
 
         try {
-            await axios.post(`http://localhost:5000/api/rooms/${roomCode}/upload`, formData, {
+            await axios.post(`https://fileroom.onrender.com/api/rooms/${roomCode}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -44,7 +44,7 @@ const RoomPage = () => {
 
     const uploadText = async () => {
         try {
-            await axios.post(`http://localhost:5000/api/rooms/${roomCode}/upload-text`, { text });
+            await axios.post(`https://fileroom.onrender.com/api/rooms/${roomCode}/upload-text`, { text });
             fetchUploads(roomCode);
         } catch (error) {
             console.error('Error uploading text:', error);
@@ -53,7 +53,7 @@ const RoomPage = () => {
 
     const downloadFile = async (filePath, fileName) => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/rooms/download`, {
+            const response = await axios.get(`https://fileroom.onrender.com/api/rooms/download`, {
                 params: { filePath },
                 responseType: 'blob',
             });

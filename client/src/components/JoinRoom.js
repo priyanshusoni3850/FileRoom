@@ -9,7 +9,7 @@ const JoinRoom = () => {
 
   const joinRoom = async () => {
     try {
-      await axios.get(`http://localhost:5000/api/rooms/${roomCode}`);
+      await axios.get(`https://fileroom.onrender.com/api/rooms/${roomCode}`);
       navigate(`/room/${roomCode}`);
     } catch (error) {
       console.error('Error joining room:', error);
