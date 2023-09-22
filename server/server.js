@@ -3,8 +3,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
-
-
 require('dotenv').config();
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
@@ -16,6 +14,7 @@ mongoose.connect(process.env.MONGO_URL, {
 .catch((err) => {
   console.error(err);
 });
+
 
 
 app.use(express.json());
