@@ -7,14 +7,13 @@ mongoose.connect('mongodb://0.0.0.0:27017/file-sharing-db', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-app.use(cors());
 app.use(express.json());
 app.use(
-    cors({
-      origin: 'https://fileroom.netlify.app/',
-    })
-  );
-  
+  cors({
+    origin: ['https://fileroom.netlify.app', 'https://fileroom.netlify.app/'],
+  })
+);
+
 // Define routes
 app.use('/api/rooms', require('./routes/room'));
 
