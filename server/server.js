@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
-mongoose.connect('mongodb://0.0.0.0:27017/file-sharing-db', {
+mongoose.connect('mongodb+srv://priyanshuair3850:<Manu3850>@cluster0.p5fo3hu.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
