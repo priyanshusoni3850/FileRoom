@@ -3,10 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 const cors = require('cors');
-// mongoose.connect('mongodb+srv://priyanshuair3850:<Manu3850>@cluster0.p5fo3hu.mongodb.net/?retryWrites=true&w=majority', {
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true,
-// });
+
 
 require('dotenv').config();
 mongoose.connect(process.env.mongo_url, {
@@ -20,11 +17,6 @@ mongoose.connect(process.env.mongo_url, {
 
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: ['https://fileroom.netlify.app', 'https://fileroom.netlify.app/'],
-//   })
-// );
 app.use(cors({
   origin: '*',
   methods: ["POST", "GET"],
