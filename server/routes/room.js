@@ -39,8 +39,9 @@ router.get('/download', (req, res) => {
     console.log(filePath);
     const fileLocation = path.join(__dirname, '..', filePath);
     console.log(fileLocation);
-
+    
     const fileStream = fs.createReadStream(fileLocation);
+    console.log(fileStream);
 
     fileStream.on('error', () => {
         res.status(404).send('File not found');
