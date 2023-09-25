@@ -36,66 +36,38 @@ router.use('/uploads', express.static('uploads'));
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-// router.get('/download', (req, res) => {
-//     console.log("clicked");
-//     const { filePath } = req.query; // Get the filePath from the query parameters
-//     console.log(filePath);
-//     const fileLocation = path.join(__dirname, '..', filePath);
-//     console.log(fileLocation);
-    
-//     const fileStream = fs.createReadStream(fileLocation);
-//     console.log(fileStream);
-
-//     fileStream.on('error', () => {
-//         res.status(404).send('File not found');
-//     });
-
-//     // Determine the content type based on the file extension
-//     let contentType = 'application/octet-stream'; // Default content type for unknown files
-//     const fileExtension = path.extname(filePath).toLowerCase();
-
-//     if (fileExtension === '.pdf') {
-//         contentType = 'application/pdf';
-//     } else if (fileExtension === '.xls' || fileExtension === '.xlsx') {
-//         contentType = 'application/vnd.ms-excel';
-//     }
-
-//     // Set appropriate response headers
-//     res.setHeader('Content-disposition', `attachment; filename=${path.basename(filePath)}`);
-//     res.setHeader('Content-type', contentType);
-
-//     // Pipe the file stream to the response
-//     fileStream.pipe(res);
-// });
-
-
 router.get('/download', (req, res) => {
-  const { filePath } = req.query; // Get the filePath from the query parameters
-  const fileLocation = path.join(__dirname, '..', 'uploads', filePath); // Construct the full file path
+    console.log("clicked");
+    const { filePath } = req.query; // Get the filePath from the query parameters
+    console.log(filePath);
+    const fileLocation = path.join(__dirname, '..', filePath);
+    console.log(fileLocation);
+    
+    const fileStream = fs.createReadStream(fileLocation);
+    console.log(fileStream);
 
-  const fileStream = fs.createReadStream(fileLocation);
+    fileStream.on('error', () => {
+        res.status(404).send('File not found');
+    });
 
-  fileStream.on('error', () => {
-      res.status(404).send('File not found');
-  });
+    // Determine the content type based on the file extension
+    let contentType = 'application/octet-stream'; // Default content type for unknown files
+    const fileExtension = path.extname(filePath).toLowerCase();
 
-  // Determine the content type based on the file extension
-  let contentType = 'application/octet-stream'; // Default content type for unknown files
-  const fileExtension = path.extname(filePath).toLowerCase();
+    if (fileExtension === '.pdf') {
+        contentType = 'application/pdf';
+    } else if (fileExtension === '.xls' || fileExtension === '.xlsx') {
+        contentType = 'application/vnd.ms-excel';
+    }
 
-  if (fileExtension === '.pdf') {
-      contentType = 'application/pdf';
-  } else if (fileExtension === '.xls' || fileExtension === '.xlsx') {
-      contentType = 'application/vnd.ms-excel';
-  }
+    // Set appropriate response headers
+    res.setHeader('Content-disposition', `attachment; filename=${path.basename(filePath)}`);
+    res.setHeader('Content-type', contentType);
 
-  // Set appropriate response headers
-  res.setHeader('Content-disposition', `attachment; filename=${path.basename(filePath)}`);
-  res.setHeader('Content-type', contentType);
-
-  // Pipe the file stream to the response
-  fileStream.pipe(res);
+    // Pipe the file stream to the response
+    fileStream.pipe(res);
 });
+
 
 
 
