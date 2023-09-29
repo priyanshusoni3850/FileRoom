@@ -6,8 +6,9 @@ const multer = require('multer');
 const upload = multer({ dest: 'uploads/' });
 const fs = require('fs');
 const path = require('path');
-router.use('/uploads', express.static('uploads'));
 
+// Serve uploaded files for download
+router.use('/uploads', express.static('uploads'));
 
 // Serve uploaded files for download
 // Serve uploaded files for download
@@ -36,37 +37,34 @@ router.use('/uploads', express.static('uploads'));
 
 
 //////////////////////////////////////////////////////////////////////////////////////
+// Download a file
 router.get('/download', (req, res) => {
-    console.log("clicked");
-    const { filePath } = req.query; // Get the filePath from the query parameters
-    console.log(filePath);
-    const fileLocation = path.join(__dirname, '..', filePath);
-    console.log(fileLocation);
-    
-    const fileStream = fs.createReadStream(fileLocation);
+  const { filePath } = req.query; // Get the filePath from the query parameters
+  const fileLocation = path.join(__dirname, '..', 'uploads', filePath); // Updated file location
 
-    fileStream.on('error', () => {
-        res.status(404).send('File not found');
-    });
+  const fileStream = fs.createReadStream(fileLocation);
 
-    // Determine the content type based on the file extension
-    let contentType = 'application/octet-stream'; // Default content type for unknown files
-    const fileExtension = path.extname(filePath).toLowerCase();
+  fileStream.on('error', () => {
+      res.status(404).send('File not found');
+  });
 
-    if (fileExtension === '.pdf') {
-        contentType = 'application/pdf';
-    } else if (fileExtension === '.xls' || fileExtension === '.xlsx') {
-        contentType = 'application/vnd.ms-excel';
-    }
+  // Determine the content type based on the file extension
+  let contentType = 'application/octet-stream'; // Default content type for unknown files
+  const fileExtension = path.extname(filePath).toLowerCase();
 
-    // Set appropriate response headers
-    res.setHeader('Content-disposition', `attachment; filename=${path.basename(filePath)}`);
-    res.setHeader('Content-type', contentType);
+  if (fileExtension === '.pdf') {
+      contentType = 'application/pdf';
+  } else if (fileExtension === '.xls' || fileExtension === '.xlsx') {
+      contentType = 'application/vnd.ms-excel';
+  }
 
-    // Pipe the file stream to the response
-    fileStream.pipe(res);
+  // Set appropriate response headers
+  res.setHeader('Content-disposition', `attachment; filename=${path.basename(filePath)}`);
+  res.setHeader('Content-type', contentType);
+
+  // Pipe the file stream to the response
+  fileStream.pipe(res);
 });
-
 
 
 

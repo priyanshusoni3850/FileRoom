@@ -19,6 +19,10 @@ app.use(cors({
   credentials: true
 }));
 // Define routes
+
+// Serve uploaded files for download
+app.use('/uploads', express.static('uploads'));
+
 app.use('/api/rooms', require('./routes/room'));
 
 const PORT = process.env.PORT || 5000;
