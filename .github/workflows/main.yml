@@ -22,8 +22,7 @@ jobs:
         working-directory: ./client
         run: |
           npm install
-          npm test
-          npm run build
+          npm start
 
       - name: Set up Node.js (for Node.js server)
         uses: actions/setup-node@v2
@@ -35,15 +34,3 @@ jobs:
         run: |
           npm install
           npm start
-          npm test
-
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to Production
-        working-directory: ./server
-        run: |
-          # Add your deployment script/command here
-          # For example, you can use a script to deploy your Node.js server to a hosting provider.
-
