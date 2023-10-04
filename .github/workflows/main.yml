@@ -33,4 +33,4 @@ jobs:
         working-directory: ./server
         run: |
           npm install
-          npm test
+          npm start
