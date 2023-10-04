@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import './css/CreateRoom.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const CreateRoom = () => {
   const [roomCode, setRoomCode] = useState('');
