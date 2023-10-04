@@ -14,7 +14,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -45,13 +45,6 @@
     "babel-jest": "^29.7.0",
     "eslint": "^8.50.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-react": "^7.33.2",
-    "jest": "^29.7.0"
-  },
-  "type": "module",
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    }
+    "eslint-plugin-react": "^7.33.2"
   }
 }
