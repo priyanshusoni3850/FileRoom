@@ -111,6 +111,7 @@ li {
   }
 
   textarea {
+    width: 60vw; /* Set the textarea width to 60% of the card width on larger screens */
     font-size: 14px; /* Reduce text area font size */
   }
 
