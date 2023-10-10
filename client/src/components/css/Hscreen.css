@@ -1,22 +1,42 @@
-/* Home.css */
+/* Hscreen.css */
 .container {
-    text-align: center;
-    margin-top: 100px;
-  }
-  
-  h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  Link {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 10px;
-    text-decoration: none;
-  }
-  
-  Link:hover {
-    text-decoration: underline;
-  }
-  
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  flex-direction: column; /* Adjust to align vertically */
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.button-card {
+  background-color: #fff;
+  border: 1px solid #007bff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  text-align: center;
+  width: 45%; /* Adjust this width as needed */
+  cursor: pointer;
+  font-size: 18px;
+  color: #007bff;
+  margin: 10px;
+  transition: background-color 0.3s;
+}
+
+.button-card:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.left-card {
+  order: 1;
+}
+
+.right-card {
+  order: 2;
+}

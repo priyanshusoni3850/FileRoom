@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 
 const RoomPage = () => {
     const { roomCode } = useParams();
+    const [uploadProgress, setUploadProgress] = useState(0);
 
     const [uploads, setUploads] = useState([]);
     const [file, setFile] = useState(null);
@@ -29,13 +30,20 @@ const RoomPage = () => {
     const uploadFile = async () => {
         const formData = new FormData();
         formData.append('file', file);
-
+    
         try {
             await axios.post(`https://fileroom.onrender.com/api/rooms/${roomCode}/upload`, formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
+                onUploadProgress: (progressEvent) => {
+                    const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+                    // Update the uploadProgress state with the progress percentage
+                    setUploadProgress(percentCompleted);
+                },
             });
+            // After upload is complete, you can clear the upload progress state.
+            setUploadProgress(0);
             fetchUploads(roomCode);
         } catch (error) {
             console.error('Error uploading file:', error);
@@ -72,14 +80,41 @@ const RoomPage = () => {
     };
 
     return (
-        <div>
-            <h2>Room: {roomCode}</h2>
-            <div>
-                <h3>File Upload</h3>
-                <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-                <button onClick={uploadFile}>Upload File</button>
+        <div className="room-page-container">
+            <div className="left-panel">
+                <h2>Room: {roomCode}</h2>
+                <div>
+                    <h3>File Upload</h3>
+                    <input type="file" onChange={(e) => setFile(e.target.files[0])} />
+                    <button onClick={uploadFile}>Upload File</button>
+                    {uploadProgress > 0 && uploadProgress < 100 && (
+                        <div className="progress-container">
+                            <div className="progress-bar" style={{ width: `${uploadProgress}%` }}>
+                                {uploadProgress}%
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div>
+                    <h3>Uploaded Files:</h3>
+                    <ul>
+                        {uploads.map((upload, index) => (
+                            !upload.isText && (
+                                <li key={index}>
+                                    <button
+                                        className="link-button"
+                                        onClick={() => downloadFile(upload.filePath, upload.fileName)}
+                                    >
+                                        {upload.fileName}
+                                    </button>
+                                </li>
+                            )
+                        ))}
+                    </ul>
+                </div>
             </div>
-            <div>
+            <div className="right-panel">
                 <h3>Text Upload</h3>
                 <textarea
                     rows="4"
@@ -88,25 +123,18 @@ const RoomPage = () => {
                     onChange={(e) => setText(e.target.value)}
                 ></textarea>
                 <button onClick={uploadText}>Upload Text</button>
-            </div>
-            <div>
-                <h3>Uploaded Files and Text:</h3>
-                <ul>
-                    {uploads.map((upload, index) => (
-                        <li key={index}>
-                            {upload.isText ? (
-                                <div>{upload.text}</div>
-                            ) : (
-                                <button
-                                    className="link-button"
-                                    onClick={() => downloadFile(upload.filePath, upload.fileName)}
-                                >
-                                    {upload.fileName}
-                                </button>
-                            )}
-                        </li>
-                    ))}
-                </ul>
+                <div>
+                    <h3>Uploaded Text:</h3>
+                    <ul>
+                        {uploads.map((upload, index) => (
+                            upload.isText && (
+                                <li key={index}>
+                                    <div>{upload.text}</div>
+                                </li>
+                            )
+                        ))}
+                    </ul>
+                </div>
             </div>
         </div>
     );

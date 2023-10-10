@@ -17,16 +17,19 @@ const CreateRoom = () => {
   };
 
   return (
-    <div>
-      <h2>Create a Room</h2>
-      <input
-        type="text"
-        placeholder="Room Code"
-        value={roomCode}
-        onChange={(e) => setRoomCode(e.target.value)}
-      />
-      <button onClick={createRoom}>Create</button>
-    </div>
+<div className="container">
+  <div className="card">
+    <h2>Create a Room</h2>
+    <input
+      type="text"
+      placeholder="Room Code"
+      value={roomCode}
+      onChange={(e) => setRoomCode(e.target.value)}
+    />
+    <button onClick={createRoom}>Create</button>
+  </div>
+</div>
+
   );
 };
 

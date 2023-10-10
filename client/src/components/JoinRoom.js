@@ -1,3 +1,4 @@
+// src/components/JoinRoom.js
 import React, { useState } from 'react';
 import axios from 'axios';
 import './css/JoinRoom.css';
@@ -17,15 +18,19 @@ const JoinRoom = () => {
   };
 
   return (
-    <div>
-      <h2>Join a Room</h2>
-      <input
-        type="text"
-        placeholder="Room Code"
-        value={roomCode}
-        onChange={(e) => setRoomCode(e.target.value)}
-      />
-      <button onClick={joinRoom}>Join</button>
+    <div className="container">
+      <div className="card">
+        <h2>Join a Room</h2>
+        <input
+          type="text"
+          placeholder="Room Code"
+          value={roomCode}
+          onChange={(e) => setRoomCode(e.target.value)}
+        />
+        <button className="join-button" onClick={joinRoom}>
+          Join
+        </button>
+      </div>
     </div>
   );
 };
