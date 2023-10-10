@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import './css/JoinRoom.css';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const JoinRoom = () => {
   const [roomCode, setRoomCode] = useState('');
@@ -18,6 +19,8 @@ const JoinRoom = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="container">
       <div className="card">
         <h2>Join a Room</h2>
@@ -32,6 +35,7 @@ const JoinRoom = () => {
         </button>
       </div>
     </div>
+    </>
   );
 };
 

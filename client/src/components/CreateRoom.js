@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './css/CreateRoom.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Navbar from './Navbar';
 
 const CreateRoom = () => {
   const [roomCode, setRoomCode] = useState('');
@@ -17,6 +18,8 @@ const CreateRoom = () => {
   };
 
   return (
+    <>
+    <Navbar/>
 <div className="container">
   <div className="card">
     <h2>Create a Room</h2>
@@ -29,7 +32,7 @@ const CreateRoom = () => {
     <button onClick={createRoom}>Create</button>
   </div>
 </div>
-
+</>
   );
 };
 

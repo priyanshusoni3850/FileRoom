@@ -2,9 +2,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './css/Hscreen.css';
+import Navbar from './Navbar';
 
 const Hscreen = () => {
   return (
+    <>
+    <Navbar></Navbar>
     <div className="container">
       <h1>Welcome to File Sharing</h1>
       <div className="button-card left-card" onClick={() => window.location.href = "/create-room"}>
@@ -14,6 +17,7 @@ const Hscreen = () => {
         Join a Room
       </div>
     </div>
+    </>
   );
 };
 

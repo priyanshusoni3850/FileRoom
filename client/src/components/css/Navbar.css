@@ -1,0 +1,47 @@
+/* Navbar.css */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Add space between logo and other elements */
+  background-color: #fff; /* Set the background color to white */
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add box shadow for 3D effect */
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo a {
+  text-decoration: none;
+  color: #000; /* Set the text color to black */
+  font-size: 24px; /* Adjust the font size */
+  font-weight: bold; /* Adjust font-weight if needed */
+  transition: transform 0.3s, color 0.3s; /* Add transitions for hover effect */
+  display: flex; /* Add this line to make the text vertically centered */
+  align-items: center; /* Add this line to make the text vertically centered */
+}
+
+.navbar-logo img {
+  width: 40px; /* Adjust the width and height of the logo */
+  height: 40px;
+  margin-right: 10px; /* Adjust the spacing between the logo and text */
+}
+
+.navbar-logo span {
+  margin-left: 10px; /* Add spacing between the logo and text */
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .navbar-logo img {
+    display: inline; /* Show the logo on smaller screens */
+  }
+  .navbar-logo span {
+    display: inline; /* Show the text on smaller screens */
+  }
+}
+
+/* Hide the text on larger screens (optional) */
+

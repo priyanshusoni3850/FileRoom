@@ -40,3 +40,18 @@ h1 {
 .right-card {
   order: 2;
 }
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .container {
+    height: 100vh; /* Adjust the height for smaller screens */
+  }
+
+  h1 {
+    font-size: 24px; /* Reduce font size for smaller screens */
+  }
+
+  .button-card {
+    width: 90%; /* Adjust button width for smaller screens */
+  }
+}

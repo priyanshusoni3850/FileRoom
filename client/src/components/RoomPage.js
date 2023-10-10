@@ -1,7 +1,9 @@
+//roompage.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './css/RoomPage.css';
 import { useParams } from 'react-router-dom';
+import Navbar from './Navbar';
 
 const RoomPage = () => {
     const { roomCode } = useParams();
@@ -80,6 +82,8 @@ const RoomPage = () => {
     };
 
     return (
+        <>
+        <Navbar/>
         <div className="room-page-container">
             <div className="left-panel">
                 <h2>Room: {roomCode}</h2>
@@ -137,6 +141,7 @@ const RoomPage = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 
