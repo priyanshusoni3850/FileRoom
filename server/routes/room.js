@@ -171,4 +171,30 @@ router.get('/:code/uploads', async (req, res) => {
   }
 });
 
+
+
+// Add this route before your existing routes
+
+// Check if a room code exists
+router.get('/check/:code', async (req, res) => {
+  try {
+    const { code } = req.params;
+    console.log(code);
+    const room = await Room.findOne({ roomCode: code });
+    
+    // If room exists, return a response indicating it's taken
+    if (room) {
+      return res.json({ exists: true });
+    }
+
+    // If room doesn't exist, return a response indicating it's available
+    res.json({ exists: false });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to check room code' });
+  }
+});
+
+
+
+
 module.exports = router;
