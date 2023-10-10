@@ -44,7 +44,7 @@ h1 {
 /* Media query for mobile screens */
 @media (max-width: 768px) {
   .container {
-    height: 100vh; /* Adjust the height for smaller screens */
+    height:80vh; /* Adjust the height for smaller screens */
   }
 
   h1 {
@@ -52,6 +52,6 @@ h1 {
   }
 
   .button-card {
-    width: 90%; /* Adjust button width for smaller screens */
+    width: 70vw; /* Set button width to 70% of the screen width on mobile */
   }
 }

@@ -1,4 +1,5 @@
 /* RoomPage.css */
+
 .room-page-container {
   display: flex;
   justify-content: space-between;
@@ -75,24 +76,6 @@ li {
   margin-right: 10px;
 }
 
-/* Add these styles to your CSS */
-.progress-container {
-  height: 10px;
-  background-color: #ccc;
-  margin-top: 10px;
-}
-
-.progress-bar {
-  height: 100%;
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  line-height: 10px;
-}
-
-
-/* RoomPage.css */
-
 /* Styles for screens with a maximum width of 768px (tablet) */
 @media (max-width: 768px) {
   .room-page-container {
@@ -102,12 +85,23 @@ li {
   .left-panel,
   .right-panel {
     width: 100%; /* Make panels full-width on smaller screens */
-    margin-bottom: 20px; /* Add spacing between panels */
+    margin: 0 auto 20px; /* Center the card horizontally and add spacing between panels */
   }
 }
 
 /* Styles for screens with a maximum width of 480px (mobile) */
 @media (max-width: 480px) {
+  .room-page-container {
+    flex-direction: column;
+    max-height: 80vh; /* Stack panels vertically on smaller screens */
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 70vw; /* Set the card width to 70% of the screen width on mobile */
+    margin: 0 auto 20px; /* Center the card horizontally and add spacing between panels */
+  }
+
   h2 {
     font-size: 20px; /* Reduce heading font size */
   }
@@ -132,4 +126,3 @@ li {
     font-size: 16px; /* Reduce download icon size */
   }
 }
-

@@ -2,10 +2,10 @@
 .navbar {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Add space between logo and other elements */
   background-color: #fff; /* Set the background color to white */
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add box shadow for 3D effect */
+  justify-content: space-between; /* Add space between logo and other elements */
 }
 
 .navbar-logo {
@@ -29,14 +29,12 @@
   margin-right: 10px; /* Adjust the spacing between the logo and text */
 }
 
-.navbar-logo span {
-  margin-left: 10px; /* Add spacing between the logo and text */
-}
-
 /* Media query for mobile screens */
 @media (max-width: 768px) {
   .navbar-logo img {
     display: inline; /* Show the logo on smaller screens */
+    width: 30px; /* Adjust the logo size for mobile screens */
+    height: 30px;
   }
   .navbar-logo span {
     display: inline; /* Show the text on smaller screens */
@@ -44,4 +42,8 @@
 }
 
 /* Hide the text on larger screens (optional) */
-
+@media (min-width: 769px) {
+  .navbar-logo span {
+    display: none; /* Hide the text on larger screens */
+  }
+}

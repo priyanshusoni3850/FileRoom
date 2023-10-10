@@ -52,8 +52,12 @@ input[type="text"] {
 }
 
 /* Media query for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   .card {
-    max-width: 90%; /* Adjust the maximum width for smaller screens */
-  }
+    max-width: 70vw; /* Set the card width to 70% of the screen width on mobile */
+    /* max-height: 70vh;  */
+}
+.container{
+  max-height: 80vh;
+}
 }
