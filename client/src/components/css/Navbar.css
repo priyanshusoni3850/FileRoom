@@ -41,9 +41,4 @@
   }
 }
 
-/* Hide the text on larger screens (optional) */
-@media (min-width: 769px) {
-  .navbar-logo span {
-    display: none; /* Hide the text on larger screens */
-  }
-}
+

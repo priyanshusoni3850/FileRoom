@@ -33,7 +33,8 @@ const CreateRoom = () => {
       <div className="container">
         <div className="card">
           <h2>Create a Room</h2>
-          <input
+          <input 
+            className='input-code'
             type="text"
             placeholder="Room Code"
             value={roomCode}

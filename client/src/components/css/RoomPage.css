@@ -34,7 +34,7 @@ h3 {
 }
 
 textarea {
-  width: 100%;
+  width: 97%;
   padding: 10px;
   margin-bottom: 20px;
   font-size: 16px;
@@ -87,6 +87,12 @@ li {
     width: 100%; /* Make panels full-width on smaller screens */
     margin: 0 auto 20px; /* Center the card horizontally and add spacing between panels */
   }
+
+
+ 
+
+ 
+
 }
 
 /* Styles for screens with a maximum width of 480px (mobile) */
